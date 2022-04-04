@@ -1,0 +1,9 @@
+[1] "---summary of MPC in one patch---"
+      dist            mpc1            mpc2            mpc3      
+ Min.   :    1   Min.   :358.9   Min.   :358.9   Min.   :365.5  
+ 1st Qu.: 7924   1st Qu.:358.9   1st Qu.:358.9   1st Qu.:367.1  
+ Median :15846   Median :358.9   Median :358.9   Median :370.1  
+ Mean   :15846   Mean   :362.5   Mean   :360.7   Mean   :379.6  
+ 3rd Qu.:23769   3rd Qu.:358.9   3rd Qu.:358.9   3rd Qu.:378.0  
+ Max.   :31691   Max.   :716.6   Max.   :716.6   Max.   :715.0  
+[1] "---relationship not linear in log-log space---"

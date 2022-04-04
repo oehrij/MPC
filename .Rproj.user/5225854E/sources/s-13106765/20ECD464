@@ -1,0 +1,26 @@
+{
+    "id": "20ECD464",
+    "path": "C:/Users/jacqu/Documents/MultiSCon/projects/MetapopulationCapacity/MPC/demo/scripts/MPC_testcalc.R",
+    "project_path": "demo/scripts/MPC_testcalc.R",
+    "type": "r_source",
+    "hash": "2719119188",
+    "contents": "",
+    "dirty": false,
+    "created": 1648751203847.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "29,0",
+        "scrollLine": "10"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1649082458,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1649082458875,
+    "read_only": false,
+    "read_only_alternatives": []
+}
