@@ -33,8 +33,15 @@ library(lconnect)         # for landscape connectivity metrics
 ##########################################################
 ## set directories 
 ## load MPC function
-dir = getwd()
-source(paste(dir,"R/MPC_functions.R",sep="/"))
+## 1) simplest way
+# dir = getwd()
+# source(paste(dir,"R/MPC_functions.R",sep="/"))
+## 2) local way
+library(devtools)
+load_all(".")      # Working directory should be in the package MPC package
+## 3) from github
+# library(devtools)        
+# install_github("oehrij/MPC")
 
 ##########################################################
 ## Start

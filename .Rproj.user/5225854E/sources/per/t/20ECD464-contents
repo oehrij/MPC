@@ -23,10 +23,16 @@ library(metacapa)         # for metapopulation capacity according to Strimas-Mac
 ##########################################################
 ## set directories 
 ## load MPC function
+## 1) simplest way
 # dir = getwd()
 # source(paste(dir,"R/MPC_functions.R",sep="/"))
-library(devtools);
-load_all("."); # Working directory should be in the package MPC package
+## 2) local way
+library(devtools)
+load_all(".")      # Working directory should be in the package MPC package
+## 3) from github
+# library(devtools)        
+# install_github("oehrij/MPC")
+
 
 ##########################################################
 ## Start
