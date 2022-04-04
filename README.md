@@ -1,6 +1,8 @@
 # MPC
-Metapopulation capacity R package 
+Metapopulation capacity R package
+
 based on code from Strimas‐Mackey & Brodie (2018) and Huang, Pimm & Giri (2020)
+
 project:       multispecies connectivity modelling 
 author:        Jacqueline Oehri (JO)
 references: 
