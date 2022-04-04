@@ -1,5 +1,4 @@
 # MPC
-##########################################################
 Metapopulation capacity R package 
 ##########################################################
 ##### project:       multispecies connectivity modelling 
