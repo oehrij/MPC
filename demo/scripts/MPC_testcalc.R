@@ -1,11 +1,11 @@
 ##########################################################
 #####
-##### project:       multispecies connectivity modelling 
+##### project:       multispecies connectivity modelling
 ##### title:         MPC_testcalc
 ##### description:   testing metapopulation capacity function calculation with shapefile, raster and patch area vector/distance matrix input
 ##### author:        Jacqueline Oehri (JO)
 ##### date:          30.03.2022
-##### last modified: 31.03.2022
+##### last modified: 07.04.2022 # changed library loading
 ##### dependencies:  MPC_genexdata.R output
 #########################################################
 
@@ -18,19 +18,22 @@ rm(list=ls(all=TRUE))
 library(sf)               # new spatial vector processing package
 library(raster)           # old (but still useful) spatial raster processing
 library(stars)            # spatial processing (conversion between sf and raster possible, spatiotemporal datacube analyses)
-library(metacapa)         # for metapopulation capacity according to Strimas-Mackey & Brodie 2018 
+library(metacapa)         # for metapopulation capacity according to Strimas-Mackey & Brodie 2018
 
 ##########################################################
-## set directories 
+## set directories
 ## load MPC function
 ## 1) simplest way
 # dir = getwd()
 # source(paste(dir,"R/MPC_functions.R",sep="/"))
 ## 2) local way
-library(devtools)
-load_all(".")      # Working directory should be in the package MPC package
-## 3) from github
-# library(devtools)        
+# library(devtools)
+# load_all(".")      # Working directory should be in the package MPC package
+## 3) more elegant local way (install it directly)
+devtools::install()
+library(MPC)         # Working directory should be in the package MPC package
+## 4) from github (soon available)
+# library(devtools)
 # install_github("oehrij/MPC")
 
 
@@ -43,7 +46,7 @@ load_all(".")      # Working directory should be in the package MPC package
 shpf = st_read(paste(dir,"demo/data/MPC_patchex.shp",sep="/"))
 rasf = raster(paste(dir,"demo/data/MPC_patchex.tif",sep="/"))
 MPC_fun(x=rasf)
-MPC_fun(x=shpf) 
+MPC_fun(x=shpf)
 # $mpc
 # [1] 369482018
 # $pimport
@@ -63,11 +66,11 @@ mdist  = matrix(ncol=3,nrow=3,byrow=TRUE,c(0.00,150.3465,300.2232,
                                            150.3465,0.00,200.05,
                                            300.2232,200.05,0.00))
 
-## Calculate MPC 
+## Calculate MPC
 print(MPC_fun(pa=pa,mdist=mdist,dispfop="negex",alpha=317)$mpc)   # JO version
 #[1] 30255.36
 
-## Comparison with Strimas-Mackey: define the dispersal function and alpha 
+## Comparison with Strimas-Mackey: define the dispersal function and alpha
 alpha   = 317
 dispfun = dispfun= function(d) { exp(-(1/alpha) * abs(d)) }
 print(metacapa::meta_capacity(x=mdist,a=pa,f=dispfun,ex=0.5,self=TRUE,patch_mc=TRUE)$capacity) # Strimas-Mackey version
@@ -87,9 +90,9 @@ mdist = matrix(ncol=5,nrow=5,byrow=TRUE,
 colnames(mdist) = c(1:5)
 rownames(mdist) = c(1:5)
 
-## Calculate MPC 
+## Calculate MPC
 print(MPC_fun(pa=pa,mdist=mdist,dispfop="negex",alpha=317)$mpc)   # JO version                                           # JO version
-## Comparison with Strimas-Mackey: define the dispersal function and alpha 
+## Comparison with Strimas-Mackey: define the dispersal function and alpha
 alpha   = 317
 dispfun = dispfun= function(d) { exp(-(1/alpha) * abs(d)) }
 print(metacapa::meta_capacity(x=mdist,a=pa,f=dispfun,ex=0.5,self=TRUE,patch_mc=TRUE)$capacity) # Strimas-Mackey version
@@ -99,9 +102,9 @@ print(metacapa::meta_capacity(x=mdist,a=pa,f=dispfun,ex=0.5,self=TRUE,patch_mc=T
 dfamax   = data.frame(patchID=1,aream2=9e+06)
 pamax    = dfamax$aream2
 mdistmax = matrix(ncol=1,nrow=1,byrow=TRUE,c(0.0000))
-## Calculate MPC 
+## Calculate MPC
 print(MPC_fun(pa=pamax,mdist=mdistmax,dispfop="negex",alpha=317)$mpc)   # JO version                                           # JO version
-## Comparison with Strimas-Mackey: define the dispersal function and alpha 
+## Comparison with Strimas-Mackey: define the dispersal function and alpha
 alpha   = 317
 dispfun = dispfun= function(d) { exp(-(1/alpha) * abs(d)) }
 print(metacapa::meta_capacity(x=mdistmax,a=pamax,f=dispfun,ex=0.5,self=TRUE,patch_mc=TRUE)$capacity) # Strimas-Mackey version

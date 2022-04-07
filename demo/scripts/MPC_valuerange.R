@@ -1,11 +1,11 @@
 ##########################################################
 #####
-##### project:       multispecies connectivity modelling 
+##### project:       multispecies connectivity modelling
 ##### title:         MPC_valuerange
 ##### description:   test metapopulation capacity (MPC) values in dependence of area and distance
 ##### author:        Jacqueline Oehri (JO)
 ##### date:          29.03.2022
-##### last modified: 31.03.2022
+##### last modified: 07.04.2022 # changed library loading
 ##### comments:      -question: if patch areas are in km2 - can distances still be counted in metres? # actually - they should also be noted in km??
 #####                -this script can be written much more efficiently..
 #########################################################
@@ -27,21 +27,25 @@ library(raster)           # old (but still useful) spatial raster processing
 library(terra)            # new spatial raster processing
 library(stars)            # spatial processing (conversion between sf and raster possible, spatiotemporal datacube analyses)
 library(dismo)            # species distribution modeling, create circles, circular polygons..
-library(metacapa)         # for metapopulation capacity according to Strimas-Mackey & Brodie 2018 
+library(metacapa)         # for metapopulation capacity according to Strimas-Mackey & Brodie 2018
 library(lconnect)         # for landscape connectivity metrics
 
 ##########################################################
-## set directories 
+## set directories
 ## load MPC function
 ## 1) simplest way
 # dir = getwd()
 # source(paste(dir,"R/MPC_functions.R",sep="/"))
 ## 2) local way
-library(devtools)
-load_all(".")      # Working directory should be in the package MPC package
-## 3) from github
-# library(devtools)        
+# library(devtools)
+# load_all(".")      # Working directory should be in the package MPC package
+## 3) more elegant local way (install it directly)
+devtools::install()
+library(MPC)         # Working directory should be in the package MPC package
+## 4) from github (soon available)
+# library(devtools)
 # install_github("oehrij/MPC")
+
 
 ##########################################################
 ## Start
@@ -61,11 +65,11 @@ for(pa in avec) {
   mpc1=MPC_fun(pa=pa,mdist=mdist,alpha=317,dispfop="negex")$mpc
   mpc2=MPC_fun(pa=pa,mdist=mdist,alpha=317,dispfop="linear")$mpc
   mpc3=MPC_fun(pa=pa,mdist=mdist,alpha=317,dispfop="log-sech")$mpc
-  mpdf0=data.frame(pa=pa,mpc1=mpc1,mpc2=mpc2,mpc3=mpc3)            
+  mpdf0=data.frame(pa=pa,mpc1=mpc1,mpc2=mpc2,mpc3=mpc3)
   mpdf=rbind(mpdf,mpdf0)
 }
 
-## write to file 
+## write to file
 write.csv(mpdf,paste(dir,"demo/data/MPC_value_range.csv",sep="/"),row.names = FALSE)
 
 ### make a plot
@@ -121,7 +125,7 @@ dev.off()
 ##########################################################
 ## Dependence on distance analysis: change in metapopulation capacity across a range of distances - with 2 equal habitat patch areas
 #
-alpha = 317       # Assuming constant alpha = 317m 
+alpha = 317       # Assuming constant alpha = 317m
 pa    = c(50.5,50.5)  # Assuming a constant patch area of two patches with each 50 km2 (i.e. together = 101km2 area)
 dvec  = c(seq(1,100*alpha,by=10)) # dist = 0 makes no sense, is covered in mdf with 1 patch of 100km2
 compareval1 = mpdf[mpdf$pa==101,"mpc1"] # same area as the two patches
@@ -131,7 +135,7 @@ compareval1 = mpdf[mpdf$pa==101,"mpc1"] # same area as the two patches
 dfamax   = data.frame(patchID=1,aream2=50.5)
 pamax    = dfamax$aream2
 mdistmax = matrix(ncol=1,nrow=1,byrow=TRUE,c(0.0000))
-## Calculate MPC 
+## Calculate MPC
 compareval2 = MPC_fun(pa=pamax,mdist=mdistmax,dispfop="negex",alpha=317)$mpc
 
 
@@ -145,16 +149,16 @@ for(dist in dvec) {
   ## Pairwise patch distances - parameter "mdist"
   mdist  = matrix(ncol=2,nrow=2,byrow=TRUE,c(0.00,dist,
                                              dist,0.00))
-  
+
   # parameters are loaded above
   mpc1=MPC_fun(pa=pa,mdist=mdist,alpha=alpha,dispfop="negex")$mpc
   mpc2=MPC_fun(pa=pa,mdist=mdist,alpha=alpha,dispfop="linear")$mpc
   mpc3=MPC_fun(pa=pa,mdist=mdist,alpha=alpha,dispfop="log-sech")$mpc
-  mddf0=data.frame(dist=dist,mpc1=mpc1,mpc2=mpc2,mpc3=mpc3)            
+  mddf0=data.frame(dist=dist,mpc1=mpc1,mpc2=mpc2,mpc3=mpc3)
   mddf=rbind(mddf,mddf0)
 }
 
-## write to file 
+## write to file
 write.csv(mddf,paste(dir,"demo/data/MPC_value_range_dist.csv",sep="/"),row.names = FALSE)
 
 ### make a plot

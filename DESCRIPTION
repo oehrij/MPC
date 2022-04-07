@@ -1,19 +1,15 @@
 Package: MPC
-Type: Package
-Title: Metapopulation capacity (MPC) core and wrapper functions
-Version: 0.0.0.1
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
 Authors@R: 
-    person("Jacqueline", "Oehri", , "jacqueline.oehri@mail.mcgill.ca", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Jacqueline", "Oehri", , "jacqueline.oehri@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-2981-9402"))
 Description: Calculate MPC and patch importance for a given set of habitat patches.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Imports: sf, stars
-Suggests: 
-    rmarkdown,
-    knitr
-VignetteBuilder: knitr
+Imports: 
+    sf,
+    stars
