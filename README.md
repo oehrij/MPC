@@ -4,7 +4,7 @@ The MPC is based on the modified MPC formulations by Hanski and Ovaskainen 2000,
 The R-code is largely based on the codes of Huang et al. 2020 and Strimas-Mackey & Brodie 2018.
 
 ## Full report
-A full report on the metapopulation capacity indicator and related indices can be accessed here: https://oehrij.shinyapps.io/MPC_report/
+A detailed report on the metapopulation capacity indicator and related indices can be accessed here: https://oehrij.shinyapps.io/MPC_report/
 
 ## References
 1) Hanski, Ilkka, and Otso Ovaskainen. 2000. The Metapopulation Capacity of a Fragmented Landscape. Nature 404 (6779): 755-58.  https://doi.org/10.1038/35008063.
