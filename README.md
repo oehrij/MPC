@@ -1,5 +1,5 @@
 ## R-functions for the derivation of metapopulation capacity (MPC)
-This package was developed for the project "Multispecies connectivity modelling in urbanized landscapes", a collaboration of McGill University and Habitat (habitat-nature.org), founded by Mitacs.
+This package was developed for the project "Multispecies connectivity modelling in urbanized landscapes", a collaboration of McGill University and Habitat (https://www.habitat-nature.com/), funded by Mitacs.
 The MPC is based on the modified MPC formulations by Hanski and Ovaskainen 2000, Hanski 1994 and Schnell et al. 2013.
 The R-code is largely based on the codes of Huang et al. 2020 and Strimas-Mackey & Brodie 2018.
 
