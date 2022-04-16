@@ -1,6 +1,6 @@
 ## Content
-The MPC R-package essentially contains a wrapper function for the derivation of metapopulation capacity (MPC) from binary habitat distribution maps (shapefile, raster patch-area vector & distance matrix). Additionally it enables the individual setting of species-specific parameters, such as dispersal capacity and distance-decay function. 
-The implemented MPC formula is based on Hanski and Ovaskainen 2000, Hanski 1994, as well as modifications suggested by Schnell et al. 2013.
+The MPC R-package essentially contains a wrapper function for the derivation of metapopulation capacity (MPC) from binary habitat distribution maps (shapefile, raster file or patch-area vector/patch-distance matrix). Additionally it enables the individual setting of species-specific parameters, such as dispersal capacity and distance-decay function. 
+The implemented MPC formula is based on Hanski and Ovaskainen 2000, Hanski 1994, as well as the modifications suggested by Schnell et al. 2013.
 The R-code is largely based on the R-codes of Huang et al. 2020 and Strimas-Mackey & Brodie 2018.
 The MPC R-package was developed for the project "Linking multispecies connectivity modelling and ecosystem services in the context of landscape urbanization", a postdoc project collaboration of McGill University and the environmental research firm Habitat (https://www.habitat-nature.com/) that is co-supervised by Dr. Andrew Gonzalez and Dr. Brian Leung.
 
