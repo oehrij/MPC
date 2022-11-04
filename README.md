@@ -4,6 +4,14 @@ The implemented MPC formula is based on Hanski and Ovaskainen 2000, Hanski 1994,
 The R-code is largely based on the R-codes of Huang et al. 2020 and Strimas-Mackey & Brodie 2018.
 The MPC R-package was developed for the project "Linking multispecies connectivity modelling and ecosystem services in the context of landscape urbanization", a postdoc project collaboration of McGill University and the environmental research firm Habitat (https://www.habitat-nature.com/) that is co-supervised by Dr. Andrew Gonzalez and Dr. Brian Leung.
 
+## Installation 
+```r
+#install_packages("devtools")
+library(devtools)
+install_github("oehrij/MPC")
+library(MPC)
+```
+
 ## Full MPC report
 A detailed report on the metapopulation capacity indicator and related indices can be accessed here: https://oehrij.shinyapps.io/MPC_report/
 
@@ -13,3 +21,4 @@ A detailed report on the metapopulation capacity indicator and related indices c
 3) Strimas-Mackey, M., & Brodie, J. F. (2018). Reserve design to optimize the long-term persistence of multiple species. Ecological Applications, 28(5), 1354-1361. https://doi.org/10.1002/eap.1739; https://github.com/mstrimas/metacapa  
 4) Huang, R., Pimm, S. L., & Giri, C. (2020). Using metapopulation theory for practical conservation of mangrove endemic birds. Conservation Biology, 34(1), 266-275. https://doi.org/10.1111/cobi.13364
 5) Hanski, I. (1994). A practical model of metapopulation dynamics. Journal of animal ecology, 151-162.https://doi.org/10.2307/5591
+6) Stott, I., Townley, S., Carslake, D., & Hodgson, D. J. (2010). On reducibility and ergodicity of population projection matrix models. Methods in Ecology and Evolution, 1(3), 242-252.
