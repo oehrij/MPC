@@ -1,6 +1,6 @@
 ##########################################################
 #####
-##### project:       multispecies connectivity modelling 
+##### project:       multispecies connectivity modelling
 ##### title:         MPC_genexdata
 ##### description:   generate example data (a raster and a shapefile with n patches) for MPC_testcalc_JO.R script
 ##### author:        Jacqueline Oehri (JO)
@@ -15,15 +15,11 @@ rm(list=ls(all=TRUE))
 ##########################################################
 ## libraries
 library(pascal)           # library(devtools); install_github("pascal-niklaus/pascal/pascal")
-library(sp)               # old spatial vector processing package
-library(rgdal)            # spatial processing
-library(rgeos)            # spatial processing
-library(maptools)         # spatial processing
 library(sf)               # new spatial vector processing package
 library(raster)           # old (but still useful) spatial raster processing
 library(stars)            # spatial processing (conversion between sf and raster possible, spatiotemporal datacube analyses)
 library(dismo)            # species distribution modeling, create circles, circular polygons..
-library(metacapa)         # for metapopulation capacity according to Strimas-Mackey & Brodie 2018 
+library(metacapa)         # for metapopulation capacity according to Strimas-Mackey & Brodie 2018
 
 ##########################################################
 ## set directory
@@ -36,7 +32,7 @@ dir = getwd()
 ##########################################################
 ## extent around Montréal example
 MTLex  = extent(1674150,1677150,855840,858840)  # larger extent could also be available: #MTLex = extent(1674150,1704150,855840,885840)
-ri     = raster(MTLex, res = 30) 
+ri     = raster(MTLex, res = 30)
 ## set EPSG Albers Equal Area projection: this is the old proj.4 string in the future it should be replaced..e.g. with similar notions such as # "EPSG:9822" # st_crs(9822)$wkt
 crs(ri) = "+proj=aea +lat_0=40 +lon_0=-96 +lat_1=44.75 +lat_2=55.75 +x_0=0 +y_0=0 +a=6378137 +rf=298.257223999999 +units=m +no_defs"
 
@@ -84,7 +80,7 @@ for(ii in 1:length(spg1)) {
   radiuss1 =c(radiuss1,radiuss)
   index = index + 1
 } # spg1
-## make a spatial polygon 
+## make a spatial polygon
 sps = SpatialPolygons(plist)
 proj4string(sps) <- crs(ri)
 plot(sps,add=TRUE,border="red",lwd=2)
@@ -106,10 +102,10 @@ st_crs(sps3) <- st_crs(sps)
 ####
 ## write as shapefile
 if(file.exists(paste(dir,"demo/data/MPC_circlex.shp",sep="/"))) { file.remove(paste(dir,"demo/data/MPC_circlex.shp",sep="/"))}
-st_write(sps3, paste(dir,"demo/data/MPC_circlex.shp",sep="/"), driver="ESRI Shapefile")  # create to a shapefile 
+st_write(sps3, paste(dir,"demo/data/MPC_circlex.shp",sep="/"), driver="ESRI Shapefile")  # create to a shapefile
 
 ### make a raster clump where circles are!
-ri4 = ri  
+ri4 = ri
 ri4[] =NA
 ## extract raster cell identities that are covered by circles
 vals = unique(unlist(raster::extract(ri4, as_Spatial(sps3$geometry),method="simple",cellnumbers=TRUE)))
@@ -132,7 +128,7 @@ plot(x$geometry,border="magenta",add=TRUE,lwd=2)
 ####
 ## write as shapefile
 if(file.exists(paste(dir,"demo/data/MPC_patchex.shp",sep="/"))) { file.remove(paste(dir,"demo/data/MPC_patchex.shp",sep="/"))}
-st_write(x, paste(dir,"demo/data/MPC_patchex.shp",sep="/"), driver="ESRI Shapefile")  # create to a shapefile 
+st_write(x, paste(dir,"demo/data/MPC_patchex.shp",sep="/"), driver="ESRI Shapefile")  # create to a shapefile
 ####
 ## write as raster file
 writeRaster(lclump, paste(dir,"demo/data/MPC_patchex.tif",sep="/"), format="GTiff", overwrite=TRUE) # Create a geoTiff file

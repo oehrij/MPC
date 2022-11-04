@@ -16,12 +16,6 @@ rm(list=ls(all=TRUE))
 
 ##########################################################
 ## libraries
-library(pascal)           # library(devtools); install_github("pascal-niklaus/pascal/pascal")
-library(RColorBrewer)     # for nice color pallettes
-library(sp)               # old spatial vector processing package
-library(rgdal)            # spatial processing
-library(rgeos)            # spatial processing
-library(maptools)         # spatial processing
 library(sf)               # new spatial vector processing package
 library(raster)           # old (but still useful) spatial raster processing
 library(terra)            # new spatial raster processing
@@ -34,13 +28,13 @@ library(lconnect)         # for landscape connectivity metrics
 ## set directories
 ## load MPC function
 ## 1) simplest way
-# dir = getwd()
+dir = getwd()
 # source(paste(dir,"R/MPC_functions.R",sep="/"))
 ## 2) local way
 # library(devtools)
 # load_all(".")      # Working directory should be in the package MPC package
 ## 3) more elegant local way (install it directly)
-devtools::install()
+#devtools::install()
 library(MPC)         # Working directory should be in the package MPC package
 ## 4) from github (soon available)
 # library(devtools)

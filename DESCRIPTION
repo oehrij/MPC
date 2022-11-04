@@ -1,15 +1,17 @@
 Package: MPC
-Title: What the Package Does (One Line, Title Case)
+Title: Calculating Metapopulation Capacity (MPC) of a Landscape
 Version: 0.0.0.9000
 Authors@R: 
     person("Jacqueline", "Oehri", , "jacqueline.oehri@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-2981-9402"))
-Description: Calculate MPC and patch importance for a given set of habitat patches.
+Description: Calculating MPC and patch importance for a set of habitat patches with given area and spatial configuration (possible inputs: raster file, shape file or area vector + distance matrix)
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
+    landscapemetrics,
+    RSpectra,
     sf,
     stars

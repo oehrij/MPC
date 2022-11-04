@@ -1,10 +1,10 @@
 [1] "---summary of MPC in one patch---"
        pa             mpc1              mpc2              mpc3        
- Min.   :    0   Min.   :      0   Min.   :      0   Min.   :      0  
- 1st Qu.: 9994   1st Qu.: 999025   1st Qu.: 999025   1st Qu.: 999025  
- Median :19996   Median :2827579   Median :2827579   Median :2827579  
- Mean   :19996   Mean   :3199600   Mean   :3199600   Mean   :3199600  
- 3rd Qu.:29999   3rd Qu.:5195763   3rd Qu.:5195763   3rd Qu.:5195763  
+ Min.   :    1   Min.   :      1   Min.   :      1   Min.   :      1  
+ 1st Qu.:10001   1st Qu.:1000150   1st Qu.:1000150   1st Qu.:1000150  
+ Median :20001   Median :2828639   Median :2828639   Median :2828639  
+ Mean   :20001   Mean   :3200400   Mean   :3200400   Mean   :3200400  
+ 3rd Qu.:30001   3rd Qu.:5196412   3rd Qu.:5196412   3rd Qu.:5196412  
  Max.   :40001   Max.   :8000300   Max.   :8000300   Max.   :8000300  
 [1] "---remove the case where pa and mpc's = 0 for model fit---"
 [1] "---relationship almost linear in log-log space---"
@@ -14,18 +14,18 @@ lm(formula = log(mpdf$mpc1) ~ log(mpdf$pa))
 
 Residuals:
        Min         1Q     Median         3Q        Max 
--5.470e-14 -4.300e-15  1.600e-15  5.100e-15  3.399e-12 
+-3.387e-14 -2.990e-15  8.500e-16  3.060e-15  2.936e-12 
 
 Coefficients:
               Estimate Std. Error   t value Pr(>|t|)    
-(Intercept)  1.528e-13  8.254e-15 1.851e+01   <2e-16 ***
-log(mpdf$pa) 1.500e+00  8.555e-16 1.753e+15   <2e-16 ***
+(Intercept)  1.025e-13  7.177e-15 1.428e+01   <2e-16 ***
+log(mpdf$pa) 1.500e+00  7.438e-16 2.017e+15   <2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 â€˜***â€™ 0.001 â€˜**â€™ 0.01 â€˜*â€™ 0.05 â€˜.â€™ 0.1 â€˜ â€™ 1
 
-Residual standard error: 5.441e-14 on 3999 degrees of freedom
+Residual standard error: 4.676e-14 on 3998 degrees of freedom
 Multiple R-squared:      1,	Adjusted R-squared:      1 
-F-statistic: 3.074e+30 on 1 and 3999 DF,  p-value: < 2.2e-16
+F-statistic: 4.067e+30 on 1 and 3998 DF,  p-value: < 2.2e-16
 
  (Intercept) log(mpdf$pa) 
-1.527724e-13 1.500000e+00 
+1.024602e-13 1.500000e+00 

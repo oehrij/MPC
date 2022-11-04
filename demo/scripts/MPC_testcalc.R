@@ -30,7 +30,7 @@ library(metacapa)         # for metapopulation capacity according to Strimas-Mac
 # library(devtools)
 # load_all(".")      # Working directory should be in the package MPC package
 ## 3) more elegant local way (install it directly)
-devtools::install()
+# devtools::install()
 library(MPC)         # Working directory should be in the package MPC package
 ## 4) from github (soon available)
 # library(devtools)
