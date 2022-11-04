@@ -13,8 +13,11 @@ MPC_fun(
   ex = 0.5,
   self = TRUE,
   evec = TRUE,
+  symmetric = FALSE,
+  lower = TRUE,
   distfun = sf::st_distance,
-  areafun = sf::st_area
+  areafun = sf::st_area,
+  savememory = TRUE
 )
 }
 \arguments{
@@ -33,6 +36,10 @@ MPC_fun(
 \item{self}{Logical: should self-colonization of patches be modeled (default, TRUE) or not (FALSE)}
 
 \item{evec}{Logical: should the dominant eigenvalue associated eigenvector be returned (default, TRUE) or not (FALSE)}
+
+\item{symmetric}{Logical: is the pairwise distance matrix symmetric (TRUE) or not (FALSE, default). In case symmetric = TRUE, eigenvalue calculations are faster because only the lower triangle will be considered. If symmetric is not specified, the eigenvalue function will use the whole matrix as input.}
+
+\item{lower}{Logical: In case the symmetric argument is TRUE: which triangle of the matrix should be used for calculation, the lower left (TRUE, default) or upper right (FALSE)}
 
 \item{distfun}{A function defining how interpatch distances are calculated in case the input is a raster or shapefile (default: euclidean, nearest, edge-to-edge: sf::st_distance)}
 

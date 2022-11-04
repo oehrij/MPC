@@ -4,7 +4,7 @@
 \alias{MPC}
 \title{Metapopulation capacity (MPC) core function}
 \usage{
-MPC(pa, mdist, alpha, dispfun, ex, self, evec)
+MPC(pa, mdist, alpha, dispfun, ex, self, evec, symmetric, lower, savememory)
 }
 \arguments{
 \item{pa}{A numeric vector of areas of habitat patches 1-n}
