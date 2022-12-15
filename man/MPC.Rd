@@ -22,7 +22,7 @@ MPC(pa, mdist, alpha, dispfun, ex, self, evec, symmetric, lower, savememory)
 \item{evec}{Logical: should the dominant eigenvalue associated eigenvector be returned (default, TRUE) or not (FALSE)}
 }
 \value{
-An 'MPC' object: a list containing a numeric MPC value (mpc), the MPC-associated squared dominant eigenvector indicating patch importance (pimport) and the patch IDs in case they are indicated (pid)
+An 'MPC' object: a list containing a numeric MPC value (mpc), metapopulation density (mpcdens), the MPC-associated squared dominant eigenvector indicating patch importance (pimport) and the patch IDs in case they are indicated (pid)
 }
 \description{
 Calculates MPC for a given set of habitat patches. The function relies on the 'sf' and 'stars'packages

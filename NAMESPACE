@@ -2,3 +2,5 @@
 
 export(MPC)
 export(MPC_fun)
+export(MPCser)
+export(rstopa)

@@ -15,8 +15,8 @@ MPC_fun(
   evec = TRUE,
   symmetric = FALSE,
   lower = TRUE,
-  distfun = sf::st_distance,
   areafun = sf::st_area,
+  distfun = sf::st_distance,
   savememory = TRUE
 )
 }
@@ -41,9 +41,9 @@ MPC_fun(
 
 \item{lower}{Logical: In case the symmetric argument is TRUE: which triangle of the matrix should be used for calculation, the lower left (TRUE, default) or upper right (FALSE)}
 
-\item{distfun}{A function defining how interpatch distances are calculated in case the input is a raster or shapefile (default: euclidean, nearest, edge-to-edge: sf::st_distance)}
-
 \item{areafun}{A function defining how patch areas are calculated in case the input is a raster or shapefile (default: sf::st_area)}
+
+\item{distfun}{A function defining how interpatch distances are calculated in case the input is a raster or shapefile (default: euclidean, nearest, edge-to-edge: sf::st_distance)}
 }
 \value{
 the 'MPC' object created by the function 'MPC'
