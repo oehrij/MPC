@@ -17,6 +17,8 @@
 #' @param ex A stochasticity parameter: if x >1, it becomes very unlikely for populations to go extinct after a critical patch size has been reached. If x <1, there exists no critical patch size and populations can even go extinct if they are large (Hanski 1994)
 #' @param self Logical: should self-colonization of patches be modeled (default, TRUE) or not (FALSE)
 #' @param evec Logical: should the dominant eigenvalue associated eigenvector be returned (default, TRUE) or not (FALSE)
+#' @param symmetric Logical: is the pairwise distance matrix symmetric (TRUE) or not (FALSE, default). In case symmetric = TRUE, eigenvalue calculations are faster because only the lower triangle will be considered. If symmetric is not specified, the eigenvalue function will use the whole matrix as input.
+#' @param lower Logical: In case the symmetric argument is TRUE: which triangle of the matrix should be used for calculation, the lower left (TRUE, default) or upper right (FALSE)
 #' @return An 'MPC' object: a list containing a numeric MPC value (mpc), metapopulation density (mpcdens), the MPC-associated squared dominant eigenvector indicating patch importance (pimport) and the patch IDs in case they are indicated (pid)
 #' @export
 MPC   = function(pa,mdist,alpha,dispfun,ex,self,evec,symmetric,lower,savememory) {
@@ -72,10 +74,10 @@ MPC   = function(pa,mdist,alpha,dispfun,ex,self,evec,symmetric,lower,savememory)
       MPC0   = eigen(M, only.values = !evec)                                                      # Strimas-Mackey & Brodie 2018: create associated eigenvector if evec=TRUE
     }                                                                                             # if matrix is not symmetric, this can result
   }
-  
+
   ## calculate "raw" metapopulation capacity only once
   mpc = Mod(MPC0$values[1])
-  
+
   ## generate the MPC object
   if (evec) {                                                                                  # Stott et al. 2010: Mod(x), return the Modulus, the simple root of the characteristic determinant of M
     MPC = list(mpc = mpc , mpcdens = mpc/sum(pa,na.rm=TRUE),
@@ -96,6 +98,8 @@ MPC   = function(pa,mdist,alpha,dispfun,ex,self,evec,symmetric,lower,savememory)
 #' @title convert geographic data to vector and matrix objects
 #' @description convert a raster or shapefile into patch area and mdist matrix objects
 #' @param x a raster or shapefile describing habitat patches
+#' @param distfun A function defining how interpatch distances are calculated in case the input is a raster or shapefile (default: euclidean, nearest, edge-to-edge: sf::st_distance)
+#' @param areafun A function defining how patch areas are calculated in case the input is a raster or shapefile (default: sf::st_area)
 #' @return a list with a vector of habitat patch areas (pa) and a distance matrix (mdist)
 #' @export
 rstopa = function(x=NULL,areafun=sf::st_area,distfun=sf::st_distance) {
@@ -177,7 +181,7 @@ MPC_fun  = function(x=NULL,pa=NULL,mdist=NULL,alpha=317,dispfop="log-sech",ex=0.
 #' @param MPCbasl numeric value of baseline MPCvalue
 #' @return a list with MPC based metrics: MPCraw = raw MPC value, MPCev = eigenvector for each patch ID, MPCdens=MPC density, MPCrmax=MPC relative to maximum potential.
 #' @export
-MPCser = function(roi=NULL,MPCbasl=NULL, 
+MPCser = function(roi=NULL,MPCbasl=NULL,
                   x=NULL,pa=NULL,mdist=NULL,alpha=317,dispfop="log-sech",ex=0.5,self=TRUE,evec=TRUE,
                   symmetric=FALSE,lower=TRUE,distfun=sf::st_distance,
                   areafun=sf::st_area,savememory=TRUE){
@@ -194,8 +198,8 @@ MPCser = function(roi=NULL,MPCbasl=NULL,
                    }} else {
                    MPCmax  = NA
                    MPCrmax = NA}
-                   if(exists("MPCbasl")){if(length(MPCbasl)>0)  {
-                   MPCrbasl = MPCraw/MPCbasl}} else {MPCrbasl = NA}
+                   if(length(MPCbasl)>0) {
+                   MPCrbasl = MPCraw/MPCbasl} else { MPCrbasl = NA}
                    MPCser = list(MPCraw  =MPCraw,
                                  MPCdens =MPCdens,
                                  MPCev   =MPCev,
@@ -204,7 +208,7 @@ MPCser = function(roi=NULL,MPCbasl=NULL,
                                  MPCrmax =MPCrmax,
                                  MPCrbasl=MPCrbasl)
                    return(MPCser)
-                   } 
+                   }
 
 
 
