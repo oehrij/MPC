@@ -8,6 +8,10 @@ rstopa(x = NULL, areafun = sf::st_area, distfun = sf::st_distance)
 }
 \arguments{
 \item{x}{a raster or shapefile describing habitat patches}
+
+\item{areafun}{A function defining how patch areas are calculated in case the input is a raster or shapefile (default: sf::st_area)}
+
+\item{distfun}{A function defining how interpatch distances are calculated in case the input is a raster or shapefile (default: euclidean, nearest, edge-to-edge: sf::st_distance)}
 }
 \value{
 a list with a vector of habitat patch areas (pa) and a distance matrix (mdist)

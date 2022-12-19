@@ -179,7 +179,7 @@ MPC_fun  = function(x=NULL,pa=NULL,mdist=NULL,alpha=317,dispfop="log-sech",ex=0.
 #' @description it uses the same arguments as the MPC_fun with two additional ones: roi and a baseline MPCvalue
 #' @param roi shapefile of region of interest
 #' @param MPCbasl numeric value of baseline MPCvalue
-#' @return a list with MPC based metrics: MPCraw = raw MPC value, MPCev = eigenvector for each patch ID, MPCdens=MPC density, MPCrmax=MPC relative to maximum potential.
+#' @return a list with MPC based metrics: MPCraw = raw MPC value, MPCdens=MPC density, MPCev = eigenvector value for each patch, MPCevid = patch ID, MPCrmax=MPC relative to maximum potential, MPCrbasl=MPC relative to baseline value (MPCbasl).
 #' @export
 MPCser = function(roi=NULL,MPCbasl=NULL,
                   x=NULL,pa=NULL,mdist=NULL,alpha=317,dispfop="log-sech",ex=0.5,self=TRUE,evec=TRUE,

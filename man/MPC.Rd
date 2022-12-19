@@ -20,6 +20,10 @@ MPC(pa, mdist, alpha, dispfun, ex, self, evec, symmetric, lower, savememory)
 \item{self}{Logical: should self-colonization of patches be modeled (default, TRUE) or not (FALSE)}
 
 \item{evec}{Logical: should the dominant eigenvalue associated eigenvector be returned (default, TRUE) or not (FALSE)}
+
+\item{symmetric}{Logical: is the pairwise distance matrix symmetric (TRUE) or not (FALSE, default). In case symmetric = TRUE, eigenvalue calculations are faster because only the lower triangle will be considered. If symmetric is not specified, the eigenvalue function will use the whole matrix as input.}
+
+\item{lower}{Logical: In case the symmetric argument is TRUE: which triangle of the matrix should be used for calculation, the lower left (TRUE, default) or upper right (FALSE)}
 }
 \value{
 An 'MPC' object: a list containing a numeric MPC value (mpc), metapopulation density (mpcdens), the MPC-associated squared dominant eigenvector indicating patch importance (pimport) and the patch IDs in case they are indicated (pid)
